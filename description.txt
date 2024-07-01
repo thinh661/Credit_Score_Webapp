@@ -1,0 +1,46 @@
+# Vietnamese Language
+
+Bộ dữ liệu HMEQ báo cáo các đặc điểm và thông tin về sự vi phạm đối với 5.960 khoản vay vốn chủ sở hữu nhà. 
+Khoản vay vốn chủ sở hữu nhà là một khoản vay mà người vay sử dụng giá trị vốn chủ sở hữu của ngôi nhà làm tài
+sản thế chấp. Bộ dữ liệu có các đặc điểm sau:
+-BAD: 1 = người nộp đơn đã vỡ nợ hoặc nợ quá hạn nghiêm trọng; 0 = người nộp đơn đã thanh toán khoản vay 
+-LOAN: Số tiền yêu cầu vay
+-MORTDUE: Số tiền nợ còn lại trên khoản thế chấp hiện tại
+-VALUE: Giá trị tài sản hiện tại.
+-REASON: lý do vay DebtCon = debt consolidation (ghép nợ); HomeImp = home improvement (sửa sang nhà cửa).
+-JOB: loại công việc, bao gồm các nhóm “Office”, “Sales”, “Mananger”, “Professional Executive”, “Self business” và các công việc khác.
+-YOJ: Số năm làm việc tại công việc hiện tại
+-DEROG: Số lượng báo cáo vỡ nợ.
+-DELINQ: Số hạn mức tín dụng quá hạn
+-CLAGE:Tuổi của hạn mức tín dụng lâu nhất tính theo tháng
+-NINQ: Số lượng yêu cầu tín dụng gần đây
+-CLNO: Số lượng hạn mức tín dụng
+-DEBTINC: Tỷ lệ nợ/thu nhập
+
+# English Language
+
+BAD: The "BAD" column represents whether a client defaulted (1) or did not default (0) on their loan payment. The mean default rate is approximately 19.95%.
+
+LOAN: The "LOAN" column represents the loan amount requested by the client. The mean loan amount is approximately 18,608 with a wide range of values. The highest loan amount is approximately 89,900.
+
+MORTDUE: The "MORTDUE" column represents the amount of the existing mortgage due for the property. There are missing values in this column. The mean mortgage due is approximately 73,761.
+
+VALUE: The "VALUE" column represents the value of the property. The mean property value is approximately 101,776, with a wide range of values. The highest property value is 855,909.
+
+REASON: The "REASON" column represents the reason for the loan, with two unique values: "DebtCon" (Debt Consolidation) and "HomeImp" (Home Improvement). The most common reason for the loan is debt consolidation (DebtCon).
+
+JOB: The "JOB" column represents the job type of the client. There are six unique job types, with "Other" being the most common job type.
+
+YOJ: The "YOJ" column represents the number of years in the job for the client. The mean years in the job is approximately 8.92 years.
+
+DEROG: The "DEROG" column represents the number of major derogatory reports on the client's credit history. The mean number of derogatory reports is approximately 0.25.
+
+DELINQ: The "DELINQ" column represents the number of delinquent credit lines on the client's credit history. The mean number of delinquent credit lines is approximately 0.45.
+
+CLAGE: The "CLAGE" column represents the age of the oldest trade line in months. The mean age of the oldest trade line is approximately 179.77 months.
+
+NINQ: The "NINQ" column represents the number of recent credit lines on the client's credit history. The mean number of recent credit lines is approximately 1.19.
+
+CLNO: The "CLNO" column represents the number of credit lines on the client's credit history. The mean number of credit lines is approximately 21.30.
+
+DEBTINC: The "DEBTINC" column represents the debt-to-income ratio for the client. The mean debt-to-income ratio is approximately 33.78
