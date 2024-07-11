@@ -1,0 +1,244 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #00833E; /* Màu nền xanh lá cây đậm */
+  margin: 0;
+  padding: 0;
+  color: white; /* Chuyển màu chữ của trang web thành màu trắng */
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  color: white; /* Chuyển màu chữ của tiêu đề thành màu trắng */
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  flex: 1 1 45%; /* Đặt mỗi nhóm thành 45% chiều rộng của container, tạo ra 2 cột */
+  margin-right: 10px; /* Khoảng cách giữa các cột */
+}
+
+.form-group:nth-child(2n) {
+  margin-right: 0; /* Xóa khoảng cách phải cho các nhóm ở cột bên phải */
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white; /* Chuyển màu chữ của nhãn thành màu trắng */
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #068F52; /* Màu nền của ô nhập liệu */
+  color: white; /* Màu chữ của ô nhập liệu */
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #E6F3EC; /* Màu nền */
+  color: #00844A; /* Màu chữ */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 24px; /* Kích cỡ chữ */
+  font-family: 'Montserrat', sans-serif; /* Font chữ */
+  width: 100%; /* Độ rộng của button là 100% của phần tử chứa nó */
+}
+
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.result h2 {
+  font-size: 24px;
+  color: white; /* Chuyển màu chữ của tiêu đề kết quả thành màu trắng */
+}
+
+.result p {
+  font-size: 18px;
+  color: white; /* Chuyển màu chữ của đoạn văn kết quả thành màu trắng */
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.result-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+  color: white; /* Chuyển màu chữ của overlay thành màu trắng */
+}
+
+.result-overlay h2 {
+  font-size: 24px;
+  color: white; /* Chuyển màu chữ của tiêu đề overlay thành màu trắng */
+  margin-bottom: 10px;
+}
+
+.result-overlay p {
+  font-size: 18px;
+  color: white; /* Chuyển màu chữ của đoạn văn overlay thành màu trắng */
+}
+
+.notification-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #E6F3EC; /* Màu nền của box thông báo kết quả */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+  display: none; /* Mặc định ẩn đi */
+  color: white; /* Chuyển màu chữ của notification box thành màu trắng */
+}
+
+.notification-box.show {
+  display: block; /* Hiển thị khi có class 'show' */
+}
+
+.notification-box .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: white; /* Chuyển màu của nút đóng thành màu trắng */
+}
+
+.notification-box h2 {
+  font-size: 24px;
+  color: #00844A; /* Màu của tiêu đề notification thành #00844A */
+  margin-bottom: 10px;
+}
+
+.notification-box p {
+  font-size: 18px;
+  color: #00844A; /* Màu của đoạn văn notification thành #00844A */
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+.button-group .action-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-group .action-button:hover {
+  background-color: #45a049;
+}
+
+
+.logo {
+  position: absolute;
+  top: 40px; /* Điều chỉnh vị trí từ đỉnh trang */
+  left: 100px; /* Điều chỉnh vị trí từ cạnh trái */
+  width: 100px; /* Điều chỉnh kích thước logo */
+  z-index: 1001; /* Đảm bảo logo nằm trên cùng */
+}
+
+/* Thêm box "Vay tiền ngay" */
+.slogan-box {
+  position: absolute;
+  top: 50px; /* Điều chỉnh vị trí từ đỉnh trang */
+  right: 100px; /* Điều chỉnh vị trí từ cạnh phải */
+  background-color: #E6F3EC; /* Màu nền */
+  color: #00844A; /* Màu chữ */
+  padding: 10px 20px; /* Điều chỉnh khoảng cách lề và padding */
+  font-size: 20px; /* Kích thước chữ */
+  font-family: 'Montserrat', sans-serif; /* Font chữ */
+  border-radius: 10px; /* Bo tròn viền */
+  z-index: 1000; /* Đảm bảo nằm trên cùng */
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  color: white;
+  margin-bottom: 20px;
+  position: relative;
+  top: 70px; /* Điều chỉnh khoảng cách từ đỉnh trang xuống */
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  top: 80px; /* Điều chỉnh khoảng cách từ đỉnh trang xuống */
+}
+
+.separator {
+  border-top: 2px solid white;
+  margin-top: 0px;
+  position: absolute;
+  top: 120px; /* Điều chỉnh vị trí từ đỉnh trang */
+  left: 20px;
+  right: 20px;
+}
+
+/* Điều chỉnh vị trí và kích thước của container */
+.container {
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  position: relative; /* Để tất cả các phần tử tuyệt đối hoặc tương đối có thể được căn chỉnh đúng vị trí của chúng */
+}

@@ -82,7 +82,6 @@ def process_input(data):
     score = scale_score(predicted_probability[0])
 
     result = {
-        'predicted_class': int(predicted_class[0]),
         'credit_score': score
     }
     return result
