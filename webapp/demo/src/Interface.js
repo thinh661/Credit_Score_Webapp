@@ -20,6 +20,7 @@ function CreditScorePrediction() {
   });
 
   const [result, setResult] = useState(null);
+  const [value, setValue] = useState(null);
   const [message, setMessage] = useState('');
   const [showNotification, setShowNotification] = useState(false);
 
@@ -30,11 +31,31 @@ function CreditScorePrediction() {
     });
   };
 
+  const calculateLoanSuggestion = (creditScore, value) => {
+
+    const numericValue = parseFloat(value);
+  if (isNaN(numericValue)) {
+    return 'Giá trị không hợp lệ';
+  }
+
+    if (creditScore < 600) {
+      return `Đề xuất Khoản vay: ${value * 0.8}`;
+    } else if (creditScore >= 600 && creditScore <= 699) {
+      return `Đề xuất Khoản vay: ${value * 0.9}`;
+    } else if (creditScore >= 700 && creditScore <= 749) {
+      return `Đề xuất Khoản vay: ${value}`;
+    } else if (creditScore >= 750) {
+      return `Đề xuất Khoản vay: ${value * 1.1}`;
+    }
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Submitting form data:', formData); 
   
     const formDataToSend = { ...formData };
+
   
     Object.keys(formDataToSend).forEach((key) => {
       if (formDataToSend[key] === '') {
@@ -46,8 +67,9 @@ function CreditScorePrediction() {
       const response = await axios.post('http://localhost:5000/predict', formDataToSend);
       console.log('API response:', response.data); 
       setResult(response.data.credit_score);
+      setValue(response.data.value);
       setMessage('');
-      setShowNotification(true); // Hiển thị thông báo khi dự đoán thành công
+      setShowNotification(true);
     } catch (error) {
       console.error('Error during API call:', error);
       setMessage('Có lỗi xảy ra khi dự đoán. Vui lòng thử lại.');
@@ -55,26 +77,32 @@ function CreditScorePrediction() {
   };
 
   const handleApproveLoan = () => {
-    // Xử lý khi người dùng chọn Duyệt khoản vay
     alert('Bạn đã duyệt khoản vay!');
-    setShowNotification(false); // Đóng box thông báo khi xử lý lựa chọn
+    setShowNotification(false);
   };
 
   const handleRejectLoan = () => {
-    // Xử lý khi người dùng chọn Từ chối khoản vay
     alert('Bạn đã từ chối khoản vay.');
-    setShowNotification(false); // Đóng box thông báo khi xử lý lựa chọn
+    setShowNotification(false);
   };
 
   const handleCloseNotification = () => {
-    setShowNotification(false); // Đóng box thông báo khi click vào nút đóng (X)
+    setShowNotification(false);
+  };
+
+  const getSegmentClass = (score) => {
+    if (score >= 300 && score <= 639) return 'bad';
+    if (score >= 640 && score <= 699) return 'fair';
+    if (score >= 700 && score <= 749) return 'good';
+    if (score >= 750 && score <= 850) return 'excellent';
+    return '';
   };
 
   return (
     <div className="overlay-container">
-      {/* Đoạn mã HTML mới */}
+      
       <div className="logo">
-      <img src={logo} alt="F88 Logo" />
+        <img src={logo} alt="F88 Logo" />
       </div>
 
       <div className="slogan-box">
@@ -82,7 +110,6 @@ function CreditScorePrediction() {
       </div>
 
       <div className="separator"></div>
-      {/* Kết thúc đoạn mã HTML mới */}
 
       <div className="container">
         <h1 className="title">Điểm Tín Dụng</h1>
@@ -226,10 +253,31 @@ function CreditScorePrediction() {
         <div className="notification-box show">
           <span className="close-button" onClick={handleCloseNotification}>&times;</span>
           <h2>Kết Quả</h2>
-          <p>Điểm tín dụng: {result}</p>
-          <div className="button-group">
-            <button className="action-button" onClick={handleApproveLoan}>Từ chối khoản vay</button>
-            <button className="action-button" onClick={handleRejectLoan}>Duyệt khoản vay</button>
+          <div className="score-segment-bar">
+            <div className="segment bad">
+              Bad
+              <span>300-639</span>
+            </div>
+            <div className="segment fair">
+              Fair
+              <span>640-699</span>
+            </div>
+            <div className="segment good">
+              Good
+              <span>700-749</span>
+            </div>
+            <div className="segment excellent">
+              Excellent
+              <span>750-850</span>
+            </div>
+          </div>
+          <p>Điểm Tín Dụng: <strong>{result}</strong></p>
+          <p>{calculateLoanSuggestion(result,value)}</p>
+          
+          
+          <div className="actions">
+            <button className="action-button" onClick={handleRejectLoan}>Từ chối Khoản vay</button>
+            <button className="action-button" onClick={handleApproveLoan}>Duyệt Khoản vay</button>
           </div>
         </div>
       )}

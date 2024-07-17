@@ -69,20 +69,25 @@ def scale_score(p):
     offset = 600 - factor*np.log(50)
     val = (1-p)/p
     score = offset + factor * np.log(val)
-    score = score -200
+    score = score + 150
     return round(max(0, min(score, 750)))
 
 
 def process_input(data):
+    if data['VALUE'] is None:
+        res_value = data['LOAN']
+    else:
+        res_value = data['VALUE']
     df = pre_processing(data=data)
 
     predicted_probability = model.predict_proba(df)[:, 1]
     predicted_class = model.predict(df)
 
     score = scale_score(predicted_probability[0])
-
+    
     result = {
-        'credit_score': score
+        'credit_score': score,
+        'value': res_value
     }
     return result
 

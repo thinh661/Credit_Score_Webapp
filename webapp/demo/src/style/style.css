@@ -1,9 +1,9 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #00833E; /* Màu nền xanh lá cây đậm */
+  background-color: #00833E; 
   margin: 0;
   padding: 0;
-  color: white; /* Chuyển màu chữ của trang web thành màu trắng */
+  color: white;
 }
 
 .container {
@@ -16,7 +16,7 @@ body {
 .title {
   font-family: 'Montserrat', sans-serif;
   font-size: 36px;
-  color: white; /* Chuyển màu chữ của tiêu đề thành màu trắng */
+  color: white; 
   margin-bottom: 20px;
 }
 
@@ -28,19 +28,19 @@ body {
 
 .form-group {
   margin-bottom: 15px;
-  flex: 1 1 45%; /* Đặt mỗi nhóm thành 45% chiều rộng của container, tạo ra 2 cột */
-  margin-right: 10px; /* Khoảng cách giữa các cột */
+  flex: 1 1 45%; 
+  margin-right: 10px; 
 }
 
 .form-group:nth-child(2n) {
-  margin-right: 0; /* Xóa khoảng cách phải cho các nhóm ở cột bên phải */
+  margin-right: 0; 
 }
 
 .form-group label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
-  color: white; /* Chuyển màu chữ của nhãn thành màu trắng */
+  color: white; 
 }
 
 .form-group input,
@@ -50,20 +50,20 @@ body {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #068F52; /* Màu nền của ô nhập liệu */
-  color: white; /* Màu chữ của ô nhập liệu */
+  background-color: #068F52; 
+  color: white; 
 }
 
 .submit-button {
   padding: 10px 20px;
-  background-color: #E6F3EC; /* Màu nền */
-  color: #00844A; /* Màu chữ */
+  background-color: #E6F3EC; 
+  color: #00844A; 
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 24px; /* Kích cỡ chữ */
-  font-family: 'Montserrat', sans-serif; /* Font chữ */
-  width: 100%; /* Độ rộng của button là 100% của phần tử chứa nó */
+  font-size: 24px; 
+  font-family: 'Montserrat', sans-serif;
+  width: 100%; 
 }
 
 
@@ -77,12 +77,12 @@ body {
 
 .result h2 {
   font-size: 24px;
-  color: white; /* Chuyển màu chữ của tiêu đề kết quả thành màu trắng */
+  color: white; 
 }
 
 .result p {
   font-size: 18px;
-  color: white; /* Chuyển màu chữ của đoạn văn kết quả thành màu trắng */
+  color: white; 
 }
 
 .button-group {
@@ -92,7 +92,7 @@ body {
 .action-button {
   padding: 10px 20px;
   margin: 0 10px;
-  background-color: #007bff;
+  background-color: #068F52;
   color: white;
   border: none;
   border-radius: 30px;
@@ -114,18 +114,18 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   text-align: center;
-  color: white; /* Chuyển màu chữ của overlay thành màu trắng */
+  color: white; 
 }
 
 .result-overlay h2 {
   font-size: 24px;
-  color: white; /* Chuyển màu chữ của tiêu đề overlay thành màu trắng */
+  color: white; 
   margin-bottom: 10px;
 }
 
 .result-overlay p {
   font-size: 18px;
-  color: white; /* Chuyển màu chữ của đoạn văn overlay thành màu trắng */
+  color: white; 
 }
 
 .notification-box {
@@ -133,18 +133,18 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #E6F3EC; /* Màu nền của box thông báo kết quả */
+  background-color: #E6F3EC; 
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   text-align: center;
-  display: none; /* Mặc định ẩn đi */
-  color: white; /* Chuyển màu chữ của notification box thành màu trắng */
+  display: none; 
+  color: white; 
 }
 
 .notification-box.show {
-  display: block; /* Hiển thị khi có class 'show' */
+  display: block; 
 }
 
 .notification-box .close-button {
@@ -153,18 +153,18 @@ body {
   right: 10px;
   font-size: 20px;
   cursor: pointer;
-  color: white; /* Chuyển màu của nút đóng thành màu trắng */
+  color: white; 
 }
 
 .notification-box h2 {
   font-size: 24px;
-  color: #00844A; /* Màu của tiêu đề notification thành #00844A */
+  color: #00844A; 
   margin-bottom: 10px;
 }
 
 .notification-box p {
   font-size: 18px;
-  color: #00844A; /* Màu của đoạn văn notification thành #00844A */
+  color: #00844A; 
 }
 
 .button-group {
@@ -188,24 +188,23 @@ body {
 
 .logo {
   position: absolute;
-  top: 40px; /* Điều chỉnh vị trí từ đỉnh trang */
-  left: 100px; /* Điều chỉnh vị trí từ cạnh trái */
-  width: 100px; /* Điều chỉnh kích thước logo */
-  z-index: 1001; /* Đảm bảo logo nằm trên cùng */
+  top: 40px;
+  left: 100px; 
+  width: 100px; 
+  z-index: 1001; 
 }
 
-/* Thêm box "Vay tiền ngay" */
 .slogan-box {
   position: absolute;
-  top: 50px; /* Điều chỉnh vị trí từ đỉnh trang */
-  right: 100px; /* Điều chỉnh vị trí từ cạnh phải */
-  background-color: #E6F3EC; /* Màu nền */
-  color: #00844A; /* Màu chữ */
-  padding: 10px 20px; /* Điều chỉnh khoảng cách lề và padding */
-  font-size: 20px; /* Kích thước chữ */
-  font-family: 'Montserrat', sans-serif; /* Font chữ */
-  border-radius: 10px; /* Bo tròn viền */
-  z-index: 1000; /* Đảm bảo nằm trên cùng */
+  top: 50px; 
+  right: 100px; 
+  background-color: #E6F3EC; 
+  color: #00844A; 
+  padding: 10px 20px; 
+  font-size: 20px; 
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 10px;
+  z-index: 1000;
 }
 
 .title {
@@ -214,7 +213,7 @@ body {
   color: white;
   margin-bottom: 20px;
   position: relative;
-  top: 70px; /* Điều chỉnh khoảng cách từ đỉnh trang xuống */
+  top: 70px;
 }
 
 .form {
@@ -222,23 +221,108 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   position: relative;
-  top: 80px; /* Điều chỉnh khoảng cách từ đỉnh trang xuống */
+  top: 80px;
 }
 
 .separator {
   border-top: 2px solid white;
   margin-top: 0px;
   position: absolute;
-  top: 120px; /* Điều chỉnh vị trí từ đỉnh trang */
+  top: 120px;
   left: 20px;
   right: 20px;
 }
 
-/* Điều chỉnh vị trí và kích thước của container */
 .container {
   text-align: center;
   padding: 20px;
   margin: 20px auto;
   max-width: 800px;
-  position: relative; /* Để tất cả các phần tử tuyệt đối hoặc tương đối có thể được căn chỉnh đúng vị trí của chúng */
+  position: relative; 
+}
+
+.score-segment-bar {
+  display: flex;
+  width: 100%;
+  height: 60px; /* Increased height to accommodate score ranges */
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.segment {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  flex-direction: column; /* Added to stack the text and score range */
+}
+
+.segment span {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.segment.bad {
+  background-color: #FF4C4C;
+}
+
+.segment.fair {
+  background-color: #FFA500;
+}
+
+.segment.good {
+  background-color: #7CFC00;
+  color: black;
+}
+
+.segment.excellent {
+  background-color: #008000;
+}
+
+.notification-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+  width: 500px; /* Increased width */
+  max-width: 90%; /* Ensure it fits on smaller screens */
+  max-height: 80%; /* Added max height to ensure it fits on smaller screens */
+  overflow-y: auto; /* Added overflow for scrolling if content overflows */
+}
+
+.notification-box h2 {
+  margin-top: 0;
+}
+
+.notification-box .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.notification-box .score-segment-bar {
+  margin-top: 20px;
+}
+
+.notification-box .actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification-box .action-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
