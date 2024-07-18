@@ -1,7 +1,7 @@
 # Credit-Score-Prediction-ML-Project
 
-<!-- Ảnh định nghĩa điểm tín dụng  -->
-<!-- ![Logo](https://github.com/3amory99/Gravity-Books-Sales-End-to-End-Project/blob/master/Project%20Screenshots/gravity%20logo.png) -->
+![Logo](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/credit_score.jpg)
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Project Phases](#project-phases)
@@ -46,7 +46,7 @@ The steps of EDA:
     - Data trend
     - Correlation and Skewness
     
-And specifically about the source code in this file.
+And specifically about the source code in [here](https://github.com/thinh661/Credit_Score_Webapp/blob/master/EDA_hmeq.ipynb).
 
 ## Pre-processing Phase
 The steps of Pre-processing:
@@ -60,7 +60,7 @@ The steps of Pre-processing:
         - Feature Selection + PCA
     - Test datasets with various models to find the best stable dataset.
 
-Specifically about the source code in this file.
+Specifically about the source code in [here](https://github.com/thinh661/Credit_Score_Webapp/blob/master/Preprocessing_hmeq.ipynb).
 
 
 ## Model Phase
@@ -72,16 +72,16 @@ Build models with 4 main machine learning algorithms:
 
 and tunning them for best validataion.
 
-Specifically about the source code in this file and 4 models are saved in here.
+Specifically about the source code in this file and 4 models are saved in [here](https://github.com/thinh661/Credit_Score_Webapp/blob/master/build_model.ipynb).
 
 ## Deploy Phase
 * In this phase, I'll build the Web Application for end users:
     * The frontend is built using the ReactJS framework.
     * GUI:
-        (link ảnh GUI)
+        ![GUI](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/GUI.png)
     * The backend is built using the Flask framework by writing RESTful APIs.
     * To test the api working properly, use the postman
-        (link ảnh postman)
+        ![Postman](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/postman_test.png)
 
 ## Report
 
