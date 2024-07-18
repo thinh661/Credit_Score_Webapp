@@ -45,8 +45,7 @@ The steps of EDA:
     - Distribution
     - Data trend
     - Correlation and Skewness
-
-![EDA](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/eda.png)
+    ![EDA](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/eda.png)
     
 And specifically about the source code in [here](https://github.com/thinh661/Credit_Score_Webapp/blob/master/EDA_hmeq.ipynb).
 
@@ -61,8 +60,7 @@ The steps of Pre-processing:
         - Feature Selection
         - Feature Selection + PCA
     - Test datasets with various models to find the best stable dataset.
-
-![preprocessing](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/preprocessing.png)
+    ![preprocessing](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/preprocessing.png)
 
 Specifically about the source code in [here](https://github.com/thinh661/Credit_Score_Webapp/blob/master/Preprocessing_hmeq.ipynb).
 
@@ -75,8 +73,7 @@ Build models with 4 main machine learning algorithms:
     - KNN
 
 and tunning them for best validataion.
-
-![model_build](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/model_acc.png)
+    ![model_build](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/model_acc.png)
 
 Specifically about the source code in this file and 4 models are saved in [here](https://github.com/thinh661/Credit_Score_Webapp/blob/master/build_model.ipynb).
 
