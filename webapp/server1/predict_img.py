@@ -9,6 +9,9 @@ model = joblib.load(r'D:\WorkSpace_Thinh1\FSS\model\best_rf_model.pkl')
 app = Flask(__name__)
 CORS(app)
 
+csv_file_path = 'D:\\WorkSpace_Thinh1\\FSS\\hmeq_with_scores.csv'
+df_csv = pd.read_csv(csv_file_path)
+
 required_fields = ["LOAN", "MORTDUE", "VALUE", "YOJ", "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC"]
 
 median_values = {
@@ -29,7 +32,6 @@ def pre_processing(data):
     df = pd.DataFrame([data])
     
     for column, median_value in median_values.items():
-        
         if column in df.columns:
             df[column] = df[column].fillna(median_value)
         else:
@@ -62,8 +64,6 @@ def pre_processing(data):
     df["REASON_Other reason"] = reason_mapping["Other reason"]
     return df.drop(["REASON", "JOB"], axis=1)
 
-
-
 def scale_score(p):
     factor = 25/np.log(2)
     offset = 600 - factor*np.log(50)
@@ -71,7 +71,6 @@ def scale_score(p):
     score = offset + factor * np.log(val)
     score = score + 150
     return round(max(0, min(score, 750)))
-
 
 def process_input(data):
     if data['VALUE'] is None:
@@ -90,6 +89,56 @@ def process_input(data):
         'value': res_value
     }
     return result
+
+columns_to_return = [
+    "BAD", "LOAN", "MORTDUE", "VALUE", "REASON", "JOB", "YOJ", 
+    "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC", 
+    "Prob", "Score", "CCCD", "Tên", "HDV"
+]
+
+@app.route('/get_by_cccd/<int:cccd>', methods=['GET'])
+def get_by_cccd(cccd):
+    cccd = int(cccd)
+    record = df_csv[df_csv['CCCD'] == cccd]
+    if record.empty:
+        return jsonify({'error': 'No data found for the given CCCD'}), 404
+    
+    # Thay thế NaN và None bằng giá trị hợp lệ
+    record = record[columns_to_return]
+    record.columns = ["BAD", "LOAN", "MORTDUE", "VALUE", "REASON", "JOB", "YOJ", "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC", "Prob", "Score", "CCCD", "Tên", "HDV"]
+    record = record.fillna('')  # Thay thế NaN bằng chuỗi rỗng hoặc giá trị khác
+    
+    return jsonify(record.to_dict(orient='records')), 200
+
+
+@app.route('/get_by_hdv/<int:hdv>', methods=['GET'])
+def get_by_hdv(hdv):
+    hdv = int(hdv)
+    record = df_csv[df_csv['HDV'] == hdv]
+    if record.empty:
+        return jsonify({'error': 'No data found for the given HDV'}), 404
+    
+     # Thay thế NaN và None bằng giá trị hợp lệ
+    record = record[columns_to_return]
+    record.columns = ["BAD", "LOAN", "MORTDUE", "VALUE", "REASON", "JOB", "YOJ", "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC", "Prob", "Score", "CCCD", "Tên", "HDV"]
+    record = record.fillna('')  # Thay thế NaN bằng chuỗi rỗng hoặc giá trị khác
+    return jsonify(record.to_dict(orient='records')), 200
+
+@app.route('/get_random_20', methods=['GET'])
+def get_random_20():
+    # Lấy 20 mẫu ngẫu nhiên từ DataFrame
+    random_records = df_csv.sample(n=20)
+    
+    # Chọn các cột cần trả về
+    random_records = random_records[columns_to_return]
+    random_records.columns = ["BAD", "LOAN", "MORTDUE", "VALUE", "REASON", "JOB", "YOJ", "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC", "Prob", "Score", "CCCD", "Tên", "HDV"]
+    
+    # Thay thế các giá trị NaN bằng chuỗi rỗng
+    random_records = random_records.fillna("")
+    
+    # Trả về dữ liệu dưới dạng JSON
+    return jsonify(random_records.to_dict(orient='records')), 200
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
