@@ -103,10 +103,9 @@ def get_by_cccd(cccd):
     if record.empty:
         return jsonify({'error': 'No data found for the given CCCD'}), 404
     
-    # Thay thế NaN và None bằng giá trị hợp lệ
     record = record[columns_to_return]
     record.columns = ["BAD", "LOAN", "MORTDUE", "VALUE", "REASON", "JOB", "YOJ", "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC", "Prob", "Score", "CCCD", "Tên", "HDV"]
-    record = record.fillna('')  # Thay thế NaN bằng chuỗi rỗng hoặc giá trị khác
+    record = record.fillna('') 
     
     return jsonify(record.to_dict(orient='records')), 200
 
@@ -118,25 +117,20 @@ def get_by_hdv(hdv):
     if record.empty:
         return jsonify({'error': 'No data found for the given HDV'}), 404
     
-     # Thay thế NaN và None bằng giá trị hợp lệ
     record = record[columns_to_return]
     record.columns = ["BAD", "LOAN", "MORTDUE", "VALUE", "REASON", "JOB", "YOJ", "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC", "Prob", "Score", "CCCD", "Tên", "HDV"]
-    record = record.fillna('')  # Thay thế NaN bằng chuỗi rỗng hoặc giá trị khác
+    record = record.fillna('')  
     return jsonify(record.to_dict(orient='records')), 200
 
 @app.route('/get_random_20', methods=['GET'])
 def get_random_20():
-    # Lấy 20 mẫu ngẫu nhiên từ DataFrame
     random_records = df_csv.sample(n=20)
     
-    # Chọn các cột cần trả về
     random_records = random_records[columns_to_return]
     random_records.columns = ["BAD", "LOAN", "MORTDUE", "VALUE", "REASON", "JOB", "YOJ", "DEROG", "DELINQ", "CLAGE", "NINQ", "CLNO", "DEBTINC", "Prob", "Score", "CCCD", "Tên", "HDV"]
     
-    # Thay thế các giá trị NaN bằng chuỗi rỗng
     random_records = random_records.fillna("")
     
-    # Trả về dữ liệu dưới dạng JSON
     return jsonify(random_records.to_dict(orient='records')), 200
 
 

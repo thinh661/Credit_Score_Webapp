@@ -6,7 +6,7 @@ const LoanApproval2 = () => {
   const [cccd2, setCCCD2] = useState('');
   const [data2, setData2] = useState(null);
   const [error2, setError2] = useState(null);
-  const [selectedLoan, setSelectedLoan] = useState(null); // State để lưu thông tin khoản vay đã chọn
+  const [selectedLoan, setSelectedLoan] = useState(null); 
 
   useEffect(() => {
     const fetchRandomData2 = async () => {
@@ -99,13 +99,11 @@ const LoanApproval2 = () => {
   };
 
   const handleApprove = () => {
-    // Logic để duyệt khoản vay
     console.log('Duyệt khoản vay:', selectedLoan);
     setSelectedLoan(null);
   };
 
   const handleReject = () => {
-    // Logic để từ chối khoản vay
     console.log('Từ chối khoản vay:', selectedLoan);
     setSelectedLoan(null);
   };
@@ -156,7 +154,7 @@ const LoanApproval2 = () => {
                   <th>DELINQ</th>
                   <th>DEROG</th>
                   <th>NINQ</th>
-                  <th>Prob</th>
+                  
                   <th>BAD</th>
                 </tr>
               </thead>
@@ -179,7 +177,7 @@ const LoanApproval2 = () => {
                     <td>{item.DELINQ}</td>
                     <td>{item.DEROG}</td>
                     <td>{item.NINQ}</td>
-                    <td>{item.Prob}</td>
+                    
                     <td>{item.BAD}</td>
                   </tr>
                 ))}
@@ -196,7 +194,7 @@ const LoanApproval2 = () => {
               </div>
               <table className="info-table2">
                 <tbody>
-                  {Object.entries(selectedLoan).filter(([key]) => key !== 'Prob').map(([key, value]) => (
+                  {Object.entries(selectedLoan).filter(([key]) => key !== 'Prob').filter(([key]) => key !== 'BAD').map(([key, value]) => (
                     <tr key={key}>
                       <td><strong>{key}:</strong></td>
                       <td>{value}</td>

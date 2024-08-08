@@ -1,28 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './style/style_admin1.css';
 import logo from './f88-white-logo.svg';
 
-function CreditScorePrediction() {
+function LoanApplication() {
   const [formData, setFormData] = useState({
+    name: '',
+    CCCD: '',
     LOAN: '',
-    MORTDUE: '',
     VALUE: '',
-    REASON: 'Other reason', 
-    JOB: 'Other', 
-    YOJ: '',
-    DEROG: '',
-    DELINQ: '',
-    CLAGE: '',
-    NINQ: '',
-    CLNO: '',
-    DEBTINC: ''
+    REASON: '',
+    JOB: '',
+    YOJ: ''
   });
 
-  const [result, setResult] = useState(null);
-  const [value, setValue] = useState(null);
-  const [message, setMessage] = useState('');
-  const [showNotification, setShowNotification] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -31,76 +22,19 @@ function CreditScorePrediction() {
     });
   };
 
-  const calculateLoanSuggestion = (creditScore, value) => {
-
-    const numericValue = parseFloat(value);
-  if (isNaN(numericValue)) {
-    return 'Giá trị không hợp lệ';
-  }
-
-    if (creditScore < 600) {
-      return `Đề xuất Khoản vay: ${value * 0.8}`;
-    } else if (creditScore >= 600 && creditScore <= 699) {
-      return `Đề xuất Khoản vay: ${value * 0.9}`;
-    } else if (creditScore >= 700 && creditScore <= 749) {
-      return `Đề xuất Khoản vay: ${value}`;
-    } else if (creditScore >= 750) {
-      return `Đề xuất Khoản vay: ${value * 1.1}`;
-    }
-  };
-
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting form data:', formData); 
-  
-    const formDataToSend = { ...formData };
+    console.log('Submitting form data:', formData);
 
-  
-    Object.keys(formDataToSend).forEach((key) => {
-      if (formDataToSend[key] === '') {
-        formDataToSend[key] = null;
-      }
-    });
-  
-    try {
-      const response = await axios.post('http://localhost:5000/predict', formDataToSend);
-      console.log('API response:', response.data); 
-      setResult(response.data.credit_score);
-      setValue(response.data.value);
-      setMessage('');
-      setShowNotification(true);
-    } catch (error) {
-      console.error('Error during API call:', error);
-      setMessage('Có lỗi xảy ra khi dự đoán. Vui lòng thử lại.');
-    }
+    setShowMessage(true);
   };
 
-  const handleApproveLoan = () => {
-    alert('Bạn đã duyệt khoản vay!');
-    setShowNotification(false);
-  };
-
-  const handleRejectLoan = () => {
-    alert('Bạn đã từ chối khoản vay.');
-    setShowNotification(false);
-  };
-
-  const handleCloseNotification = () => {
-    setShowNotification(false);
-  };
-
-  const getSegmentClass = (score) => {
-    if (score >= 300 && score <= 639) return 'bad';
-    if (score >= 640 && score <= 699) return 'fair';
-    if (score >= 700 && score <= 749) return 'good';
-    if (score >= 750 && score <= 850) return 'excellent';
-    return '';
+  const closeMessage = () => {
+    setShowMessage(false);
   };
 
   return (
     <div className="overlay-container">
-      
       <div className="logo">
         <img src={logo} alt="F88 Logo" />
       </div>
@@ -112,10 +46,32 @@ function CreditScorePrediction() {
       <div className="separator"></div>
 
       <div className="container">
-        <h1 className="title">Điểm Tín Dụng</h1>
+        <h1 className="title">Nhập Hồ Sơ Vay</h1>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="LOAN">LOAN</label>
+            <label htmlFor="name">Họ tên</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="CCCD">CCCD</label>
+            <input
+              type="text"
+              id="CCCD"
+              name="CCCD"
+              value={formData.CCCD}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="LOAN">Khoản vay (LOAN)</label>
             <input
               type="text"
               id="LOAN"
@@ -126,163 +82,63 @@ function CreditScorePrediction() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="MORTDUE">MORTDUE</label>
-            <input
-              type="text"
-              id="MORTDUE"
-              name="MORTDUE"
-              value={formData.MORTDUE}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="VALUE">VALUE</label>
+            <label htmlFor="VALUE">Giá trị tài sản thế chấp (VALUE)</label>
             <input
               type="text"
               id="VALUE"
               name="VALUE"
               value={formData.VALUE}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="REASON">REASON</label>
-            <select
+            <label htmlFor="REASON">Lý do vay (REASON)</label>
+            <input
+              type="text"
               id="REASON"
               name="REASON"
               value={formData.REASON}
               onChange={handleChange}
-            >
-              <option value="DebtCon">DebtCon</option>
-              <option value="HomeImp">HomeImp</option>
-              <option value="Other reason">Other</option>
-            </select>
+              required
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="JOB">JOB</label>
-            <select
+            <label htmlFor="JOB">Nghề nghiệp (JOB)</label>
+            <input
+              type="text"
               id="JOB"
               name="JOB"
               value={formData.JOB}
               onChange={handleChange}
-            >
-              <option value="Mgr">Mgr</option>
-              <option value="Office">Office</option>
-              <option value="Other">Other</option>
-              <option value="ProfExe">ProfExe</option>
-              <option value="Sales">Sales</option>
-              <option value="Self">Self</option>
-            </select>
+              required
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="YOJ">YOJ</label>
+            <label htmlFor="YOJ">Số năm công tác (YOJ)</label>
             <input
               type="text"
               id="YOJ"
               name="YOJ"
               value={formData.YOJ}
               onChange={handleChange}
+              required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="DEROG">DEROG</label>
-            <input
-              type="text"
-              id="DEROG"
-              name="DEROG"
-              value={formData.DEROG}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="DELINQ">DELINQ</label>
-            <input
-              type="text"
-              id="DELINQ"
-              name="DELINQ"
-              value={formData.DELINQ}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="CLAGE">CLAGE</label>
-            <input
-              type="text"
-              id="CLAGE"
-              name="CLAGE"
-              value={formData.CLAGE}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="NINQ">NINQ</label>
-            <input
-              type="text"
-              id="NINQ"
-              name="NINQ"
-              value={formData.NINQ}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="CLNO">CLNO</label>
-            <input
-              type="text"
-              id="CLNO"
-              name="CLNO"
-              value={formData.CLNO}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="DEBTINC">DEBTINC</label>
-            <input
-              type="text"
-              id="DEBTINC"
-              name="DEBTINC"
-              value={formData.DEBTINC}
-              onChange={handleChange}
-            />
-          </div>
-          <button type="submit" className="submit-button">Kiểm Tra</button>
+          <button type="submit" className="submit-button">Lưu Hồ Sơ</button>
         </form>
-        {message && <p>{message}</p>}
-      </div>
 
-      {result && showNotification && (
-        <div className="notification-box show">
-          <span className="close-button" onClick={handleCloseNotification}>&times;</span>
-          <h2>Kết Quả</h2>
-          <div className="score-segment-bar">
-            <div className="segment bad">
-              Bad
-              <span>300-639</span>
-            </div>
-            <div className="segment fair">
-              Fair
-              <span>640-699</span>
-            </div>
-            <div className="segment good">
-              Good
-              <span>700-749</span>
-            </div>
-            <div className="segment excellent">
-              Excellent
-              <span>750-850</span>
-            </div>
+        {/* Hộp thoại thông báo */}
+        {showMessage && (
+          <div className="message-box">
+            <span className="close-btn" onClick={closeMessage}>&times;</span>
+            <p className="message-title"></p>
+            <p>Hồ sơ vay đã được lưu trên hệ thống!</p>
           </div>
-          <p>Điểm Tín Dụng: <strong>{result}</strong></p>
-          <p>{calculateLoanSuggestion(result,value)}</p>
-          
-          
-          <div className="actions">
-            <button className="action-button" onClick={handleRejectLoan}>Từ chối Khoản vay</button>
-            <button className="action-button" onClick={handleApproveLoan}>Duyệt Khoản vay</button>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
 
-export default CreditScorePrediction;
+export default LoanApplication;
