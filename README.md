@@ -86,8 +86,12 @@ Specifically about the source code in this file and 4 models are saved in [here]
 ## Deploy Phase
 * In this phase, I'll build the Web Application for end users:
     * The frontend is built using the ReactJS framework.
-    * GUI:
-        ![GUI](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/GUI.png)
+    * GUI Login:
+        ![login](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/login.png)
+    * The saler role GUI:
+        ![saler](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/saler.png)
+    * The approver role GUI:
+        ![approver](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/approver.png)
     * The backend is built using the Flask framework by writing RESTful APIs.
     * To test the api working properly, use the postman
         ![Postman](https://github.com/thinh661/Credit_Score_Webapp/blob/master/image/postman_test.png)
