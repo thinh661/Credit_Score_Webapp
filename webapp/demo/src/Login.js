@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style/style.css';
-import logo from './f88-white-logo.svg';
+import logo from './logo/login-logo.svg';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -14,33 +14,36 @@ function Login({ onLogin }) {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin();
+  };
+
   return (
-    <div className="login-container1">
-      <div className="header1">
-        <img src={logo} alt="F88 Logo" className="logo1" />
-        <div className="slogan-box1">Vay tiền ngay</div>
-        <div className="separator1"></div>
-      </div>
-      <div className="login-content1">
-        <h1 className="title1">Đăng Nhập</h1>
-        <div className="form-group1">
-          <label>Tên đăng nhập</label>
+    <div className="login-container">
+      <form className="login-card" onSubmit={handleSubmit}>
+        <img src={logo} alt="Login Logo" className="login-logo" />
+        <h2 className="login-title">Đăng Nhập Hệ Thống</h2>
+        <div className="form-group">
+          <label htmlFor="username">Tên đăng nhập <span style={{ color: 'red' }}>*</span></label>
           <input
+            id="username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="form-group1">
-          <label>Mật khẩu</label>
+        <div className="form-group">
+          <label htmlFor="password">Mật khẩu <span style={{ color: 'red' }}>*</span></label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={handleLogin} className="submit-button1">Đăng Nhập</button>
-      </div>
+        <button type="submit" className="login-button">Đăng Nhập</button>
+      </form>
     </div>
   );
 }
