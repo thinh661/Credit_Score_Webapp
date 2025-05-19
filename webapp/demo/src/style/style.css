@@ -1,101 +1,77 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #00833E;
+  background: linear-gradient(135deg, #33D6D6, #2BB673);
   margin: 0;
   padding: 0;
-  color: white;
 }
 
-.login-container1 {
+.login-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
 }
 
-.header1 {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.logo1 {
-  position: absolute;
-  top: 5px;
-  left: 40px;
-  width: 150px;
-  z-index: 1001;
-}
-
-.slogan-box1 {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #E6F3EC;
-  color: #00844A;
-  padding: 10px 20px;
-  font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
-  border-radius: 10px;
-}
-
-.separator1 {
-  border-top: 2px solid white;
-  margin-top: 80px;
-}
-
-.login-content1 {
-  background-color: rgba(255, 255, 255, 0.1);
+.login-card {
+  background-color: white;
+  border-radius: 16px;
   padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-.title1 {
+.login-logo {
+  width: 180px;       
+  height: auto;      
+  margin-bottom: 30px; 
+}
+
+.login-title {
+  font-size: 28px;
+  color: #00844A;
   font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
-  color: white;
   margin-bottom: 30px;
 }
 
-.form-group1 {
+.form-group {
   margin-bottom: 20px;
   text-align: left;
 }
 
-.form-group1 label {
+.form-group label {
   display: block;
   font-weight: bold;
-  margin-bottom: 5px;
-  color: white;
+  margin-bottom: 6px;
+  color: #0a0a0a !important;
 }
 
-.form-group1 input {
+.form-group input {
   width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #068F52;
-  color: white;
+  border-radius: 8px;
+  background-color: #d7e8eb !important;
+  color: black !important;
+  font-size: 16px;
 }
 
-.submit-button1 {
-  padding: 15px 20px;
-  background-color: #E6F3EC;
-  color: #00844A;
+.login-button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 14px;
+  background-color: #00844A;
+  color: white;
   border: none;
   border-radius: 10px;
-  cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
   font-family: 'Montserrat', sans-serif;
-  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.submit-button1:hover {
-  background-color: #45a049;
+.login-button:hover {
+  background-color: #006F3A;
 }
